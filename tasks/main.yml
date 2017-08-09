@@ -1,0 +1,28 @@
+- name: remove packages if defined
+  yum:
+    name:  "{{ item }}"
+    state: absent
+  with_items:
+    - "{{ packages.remove }}"
+  when:
+    packages.install is defined and
+    packages.install | length > 1
+
+- name: install packages if defined
+  yum:
+    name:  "{{ item.name }}"
+    state: "{{ item.state}}"
+  with_items:
+    - "{{ packages.install }}"
+  when:
+    packages.install is defined and
+    packages.install | length > 1
+
+- name: upgrade Packages
+  yum:
+    name:  "*"
+    state: latest
+  when:
+    packages.upgrade is defined and
+    packages.upgrade == True
+    
