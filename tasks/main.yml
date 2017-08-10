@@ -5,8 +5,8 @@
   with_items:
     - "{{ packages.remove }}"
   when:
-    packages.install is defined and
-    packages.install | length > 1
+    packages.remove is defined and
+    packages.remove | length > 1
 
 - name: install packages if defined
   yum:
@@ -25,4 +25,3 @@
   when:
     packages.upgrade is defined and
     packages.upgrade == True
-    
