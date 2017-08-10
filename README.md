@@ -6,7 +6,21 @@
 
 # Usage
 
-Replace the defaults in defaults/main.yml, or provide variables definition by other way ( group_var, command line arguments, .... ).
+Define the Configuration hash some place . Check Examples at defaults/main.yml.ex
+
+## Configuration Capabilities
+
+```yaml
+packages:
+  remove: # []                     # Optional list of packages to be removed
+    # - "libselinux-python"
+  install:                         # Optional list of packages to install
+    - { name: "libselinux-python", state: "latest" }
+    - { name: "bind-utils",        state: "latest" }
+    - { name: "nmap" }
+  upgrade: True                  # upgrade or not installed packages
+
+```
 
 # License
 
