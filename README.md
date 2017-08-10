@@ -6,7 +6,7 @@
 
 # Usage
 
-Replace the defaults in defaults/main.yml, or provide variables definition by other way ( group_var, command line arguments, .... )
+Replace the defaults in defaults/main.yml, or provide variables definition by other way ( group_var, command line arguments, .... ).
 
 # License
 
@@ -14,4 +14,4 @@ MIT
 
 # Author Information
 
-Created by Miguel Rodrigues.
+Created by Miguel Rodrigues
