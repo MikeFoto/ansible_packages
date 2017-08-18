@@ -23,6 +23,15 @@ packages:
     upgrade: True                  # upgrade or not installed packages
   apt:                           # Same options for debian distros
     .......
+  tests:                         # optional . lists of shell tests
+    - {
+        name: test1,
+        command: "echo 'test1 succeed' "
+      }
+    - {
+        name: test2,
+        command: "echo 'test2 succeed' "
+      }
 
 ```
 

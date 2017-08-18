@@ -1,0 +1,6 @@
+- name: ansible_packages tests
+  shell:
+    "{{ item.command }}"
+  changed_when: False
+  with_items:
+    - "{{ packages.tests }}"

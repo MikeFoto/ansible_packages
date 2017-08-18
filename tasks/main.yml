@@ -12,3 +12,7 @@
 - include: "apt.yml"
   static:  yes
   when:    ansible_os_family == "Debian"
+
+- include: "tests.yml"
+  static:  yes
+  when: packages.tests is defined
