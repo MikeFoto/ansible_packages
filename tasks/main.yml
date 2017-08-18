@@ -1,25 +1,14 @@
-- name: remove packages if defined
-  yum:
-    name:  "{{ item }}"
-    state: absent
-  with_items:
-    - "{{ packages.remove }}"
-  when:
-    packages.remove is defined
+# switch package manager based on os family
 
-- name: install packages if defined
-  yum:
-    name:  "{{ item.name }}"
-    state: "{{ item.state | default('latest')}}"
-  with_items:
-    - "{{ packages.install }}"
-  when:
-    packages.install is defined
+- name: debug1
+  debug:
+    msg: "OS family is ({{ ansible_os_family }})"
 
-- name: upgrade Packages
-  yum:
-    name:  "*"
-    state: latest
-  when:
-    packages.upgrade is defined and
-    packages.upgrade == True
+- include: "yum.yml"
+  static:  yes
+  when:    ansible_os_family == "CentOS"
+
+
+- include: "apt.yml"
+  static:  yes
+  when:    ansible_os_family == "Debian"

@@ -1,0 +1,25 @@
+- name: remove packages if defined (apt)
+  apt:
+    name:  "{{ item }}"
+    state: absent
+  with_items:
+    - "{{ packages.apt.remove }}"
+  when:
+    packages.apt.remove is defined
+
+- name: upgrade Packages (apt)
+  apt:
+    upgrade: yes
+    update_cache: yes
+  when:
+    packages.apt.upgrade is defined and
+    packages.apt.upgrade == True
+    
+- name: install packages if defined (apt)
+  apt:
+    name:  "{{ item.name }}"
+    state: "{{ item.state | default('latest')}}"
+  with_items:
+    - "{{ packages.apt.install }}"
+  when:
+    packages.apt.install is defined
